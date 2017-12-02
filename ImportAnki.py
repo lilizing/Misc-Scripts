@@ -69,11 +69,11 @@ def Main():
        fh.close()
     del writer
     print "***********step3: 复制音频文件到媒体库***********"
-    # copyFiles(os.getcwd(), media_dir)
+    copyFiles(os.getcwd(), media_dir)
     
 def copyFiles(sourceDir,  targetDir):
     for file in os.listdir(sourceDir): 
-        if os.path.splitext(file)[1] != ".mp3":
+        if os.path.splitext(file)[1] == ".csv":
             continue
         print file
         sourceFile = os.path.join(sourceDir,  file) 
