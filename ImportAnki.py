@@ -59,10 +59,11 @@ def Main():
 
        print "***********step1: 字幕处理 - 转码、重命名、提取中英文***********"
        newF = newname_prefix + '.lrc'
-    #    os.system('iconv -f GB2312 -t UTF-8 ' + f + ' > ' + newF)
-    #    os.remove(os.path.join(curpath, f))
-
-       os.rename(f, newF)
+       os.system('iconv -f GB2312 -t UTF-8 ' + f + ' > ' + newF)
+       os.remove(os.path.join(curpath, f))
+       
+       #test code
+       #    os.rename(f, newF)
 
        fh = file(newF,'r')
        content = fh.read()
@@ -82,7 +83,7 @@ def Main():
        fh.close()
 
     del writer
-    
+
     print "***********step3: 复制音频文件到媒体库***********"
     copyFiles(os.getcwd(), media_dir)
     
