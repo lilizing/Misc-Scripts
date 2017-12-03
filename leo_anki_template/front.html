@@ -1,0 +1,38 @@
+<style scoped>
+    .replaybutton span {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 5px;
+    }
+    
+    .replaybutton span svg {
+        stroke: none;
+        fill: black;
+        display: inline;
+        height: 1em;
+        width: 1em;
+        min-width: 12px;
+        min-height: 12px;
+    }
+</style>
+<!-- 英语单词模板(三色) ninja33.github.io -->
+<script>
+    function toggle(e) {
+        var box = document.getElementById('sample_' + e);
+        var btn = document.getElementById('button_' + e);
+        if (box.style.display == 'none') {
+            box.style.display = 'block';
+            btn.src = '_lulu_minus.png';
+        } else {
+            box.style.display = 'none';
+            btn.src = '_lulu_plus.png';
+        }
+    }
+</script>
+<div id="en" class="section">
+    devise<br>
+    <span class="phonetic">英 [dɪ'vaɪz]&nbsp;美 [dɪ'vaɪz]</span>
+    <span class="word_header_star">★★☆☆☆</span>
+    <img id="button_en" class="button" src="_lulu_minus.png" onclick="toggle('en')">
+</div>
+<div id="sample_en" class="sample">he devised a new method for teaching the blind.</div> " "

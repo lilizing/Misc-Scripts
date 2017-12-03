@@ -1,0 +1,74 @@
+<style scoped>
+    .box {
+        display: relative;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: 2px 2px 5px #808080;
+    }
+    
+    .audio {
+        display: relative;
+        background-color: #18adab;
+        border-radius: 8px 8px 0 0;
+        color: #fff;
+        height: 120px;
+    }
+    
+    .play {
+        position: relative;
+        width: 64px;
+        margin-left: -32px;
+        left: 50%;
+        top: 28px;
+    }
+    
+    .expand_chinese {
+        position: absolute;
+        right: 20px;
+        top: 80px;
+    }
+    
+    .answer {
+        display: none;
+        font-size: 14px;
+        padding: 20px 20px 20px 20px;
+    }
+    
+    .answer .chinese {
+        color: #666666;
+    }
+    
+    .answer .english {
+        color: #016ea6;
+        font-weight: bold;
+    }
+</style>
+<script>
+    function toggle(e) {
+        var box = document.getElementById('answer');
+        var btn = document.getElementById('button_show');
+        if (box.style.display == 'block') {
+            box.style.display = 'none';
+            btn.src = '_expand.png';
+        } else {
+            box.style.display = 'block';
+            btn.src = '_fold.png';
+        }
+    }
+</script>
+
+<div class="box">
+    <div class="audio">
+        <div class="play">
+            <!-- <image style="width: 64px; height: 64px;" src="_inline_replay_button.png"></image> -->
+            {{音频}}
+        </div>
+        <div class="expand_chinese">
+            <image id="button_show" style="width: 32px; height: 32px;" src="_expand.png" onclick="toggle()"></image>
+        </div>
+    </div>
+    <div id="answer" class="answer">
+        <div class="chinese">
+            译文: {{译文}}
+        </div>
+    </div>
+</div>
