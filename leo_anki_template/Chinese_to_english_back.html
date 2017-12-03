@@ -10,19 +10,38 @@
     }
 </style>
 
+<script>
+    function toggle(e) {
+        var box = document.getElementById('answer');
+        var btn = document.getElementById('button_show');
+        if (box.style.display == 'none') {
+            box.style.display = 'block';
+            btn.src = '_fold.png';
+        } else {
+            box.style.display = 'none';
+            btn.src = '_expand.png';
+        }
+    }
+</script>
+
 <div class="box">
     <div class="audio">
         <div class="play">
             <image style="width: 64px; height: 64px;" src="_translate.png"></image>
         </div>
+        <div class="expand_chinese">
+            <image id="button_show" style="width: 32px; height: 32px;" src="_fold.png" onclick="toggle()"></image>
+        </div>
     </div>
-    <div id="answer" class="answer">
+    <div class="answer">
         <div class="chinese">
             中: {{译文}}
         </div>
-        <br/>
-        <div class="english">
-            E: {{原文}}
+        <div id="answer">
+            <br/>
+            <div class="english">
+                E: {{原文}}
+            </div>
         </div>
     </div>
 </div>
