@@ -64,8 +64,9 @@ def Main():
        if not english:
 	        answer = content[10:]
        else:
-	        answer = question + "   " + english[0]
-       writer.writerow([question, question + "  " + chinese, answer])
+	        answer = english[0]
+       writer.writerow([question, chinese, answer])
+       
        fh.close()
     del writer
     print "***********step3: 复制音频文件到媒体库***********"
@@ -75,7 +76,6 @@ def copyFiles(sourceDir,  targetDir):
     for file in os.listdir(sourceDir): 
         if os.path.splitext(file)[1] == ".csv":
             continue
-        print file
         sourceFile = os.path.join(sourceDir,  file) 
         targetFile = os.path.join(targetDir,  file) 
         if os.path.isfile(sourceFile): 
