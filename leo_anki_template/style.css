@@ -35,6 +35,10 @@
     font-weight: bold;
 }
 
+.expand_chinese:hover {
+    cursor: pointer;
+}
+
 
 /*隐藏掉插件默认样式*/
 
