@@ -34,3 +34,35 @@
     color: #016ea6;
     font-weight: bold;
 }
+
+
+/*隐藏掉插件默认样式*/
+
+.replaybutton span {
+    display: none;
+}
+
+
+/*隐藏掉移动端默认的音频图标*/
+
+.soundLink .playImage {
+    display: none;
+}
+
+
+/*移动端和PC端音频图标样式*/
+
+.soundLink,
+.replaybutton {
+    position: relative;
+    display: inline-block;
+    background: url("_play.png") no-repeat;
+    background-size: contain;
+    width: 64px;
+    height: 64px;
+}
+
+.soundLink:hover,
+.replaybutton:hover {
+    cursor: pointer;
+}
