@@ -1,0 +1,36 @@
+.box {
+    display: relative;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 2px 2px 5px #808080;
+}
+
+.audio {
+    display: relative;
+    background-color: #18adab;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+    height: 120px;
+}
+
+.play {
+    position: relative;
+    width: 64px;
+    margin-left: -32px;
+    left: 50%;
+    top: 28px;
+}
+
+.expand_chinese {
+    position: absolute;
+    left: 20px;
+    top: 80px;
+}
+
+.answer .chinese {
+    color: #666666;
+}
+
+.answer .english {
+    color: #016ea6;
+    font-weight: bold;
+}
