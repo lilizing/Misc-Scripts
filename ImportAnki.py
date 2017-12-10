@@ -13,7 +13,7 @@ reload(sys)
 sys.setdefaultencoding("utf8") 
 
 output = "import.csv"
-media_dir = "/Users/leo/Library/Application Support/Anki2/用户1/collection.media"
+media_dir = "/Users/leo/Library/Application Support/Anki2/leo/collection.media"
 
 def copyFiles(sourceDir,  targetDir):
     for file in os.listdir(sourceDir): 
