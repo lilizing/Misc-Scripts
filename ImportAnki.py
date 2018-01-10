@@ -17,7 +17,7 @@ media_dir = "/Users/leo/Library/Application Support/Anki2/leo/collection.media"
 
 def copyFiles(sourceDir,  targetDir):
     for file in os.listdir(sourceDir): 
-        if os.path.splitext(file)[1] == ".csv":
+        if os.path.splitext(file)[1] != ".mp3":
             continue
         sourceFile = os.path.join(sourceDir,  file) 
         targetFile = os.path.join(targetDir,  file) 
@@ -32,9 +32,13 @@ def copyFiles(sourceDir,  targetDir):
   
 def GetChinese(str):  
     line = str.strip().decode('utf-8', 'ignore')  # 处理前进行相关的处理，包括转换成Unicode等  
-    p2 = re.compile(ur'[^\u4e00-\u9fa5\uff00-\uffef]')  # 中文的编码范围是：\u4e00到\u9fa5，中文标点符号范围是：\uff00-\uffef
+    p2 = re.compile(ur'[\u4e00-\u9fa5]|[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]')  # 中文的编码范围是：\u4e00到\u9fa5，中文标点符号范围是：\uff00-\uffef
     zh = "".join(p2.split(line)).strip() 
     return zh
+
+# /[\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\“\”\<\>\！]/g
+# /[^\x00-\xff]/igm
+# [^\u4e00-\u9fa5\uff00-\uffef]
 
 def GetEnglish(content):
     value = content.strip().decode('utf-8', 'ignore')
@@ -59,7 +63,7 @@ def Main():
 
        newname_prefix = str(time.time()) + str(i)
 
-       print "***********step1: 转码、提取中英文***********"
+    #    print "***********step1: 转码、提取中英文***********"
        newF = newname_prefix + '.lrc'
         #    os.system('iconv -f ' + originCode + ' -t UTF-8 "' + f + '" > "' + newF + '"')
         #    os.remove(os.path.join(curpath, f))
@@ -73,10 +77,10 @@ def Main():
        chinese = GetChinese(content)
 
         #    print content
-        #    print english
-        #    print chinese
+           print english
+           print chinese
        
-       print "***********step2: 重命名文件名***********"
+        #    print "***********step2: 重命名文件名***********"
        os.rename(f, newF)
 
        mp3file = f[:-3] + "mp3"
@@ -85,14 +89,14 @@ def Main():
        os.rename(mp3file, newname)
        audio = "[sound:" + newname +"]"
 
-       writer.writerow([audio, english, chinese])
+       writer.writerow([english, chinese, audio])
        
        fh.close()
 
     del writer
 
-    print "***********step3: 复制文件到媒体库***********"
-    copyFiles(os.getcwd(), media_dir)
+    # print "***********step3: 复制文件到媒体库***********"
+    # copyFiles(os.getcwd(), media_dir)
     
 
 

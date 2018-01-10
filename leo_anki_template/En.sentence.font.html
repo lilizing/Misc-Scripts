@@ -15,31 +15,28 @@
         var btn = document.getElementById('button_show');
         if (box.style.display == 'none') {
             box.style.display = 'block';
-            btn.src = '_fold.png';
+            btn.src = '_expand_2.png';
         } else {
             box.style.display = 'none';
-            btn.src = '_expand.png';
+            btn.src = '_expand_2.png';
         }
     }
 </script>
 
-<div class="box">
+<div class="box" style="height: 530px;">
     <div class="audio">
         <div class="play">
             <!-- <image style="width: 64px; height: 64px;" src="_inline_replay_button.png"></image> -->
-            {{音频}}
-        </div>
-        <div class="expand_chinese">
-            <image id="button_show" style="width: 32px; height: 32px;" src="_fold.png" onclick="toggle()"></image>
+            {{Audio}}
         </div>
     </div>
     <div id="answer" class="answer">
         <div class="chinese">
-            中: {{译文}}
-        </div>
-        <br/>
-        <div class="english">
-            E: {{原文}}
+            中: {{Chinese}}
         </div>
     </div>
+</div>
+
+<div class="expand_chinese_fix">
+    <image id="button_show" style="width: 32px; height: 32px;" src="_expand_2.png" onclick="toggle()"></image>
 </div>

@@ -35,10 +35,17 @@
     font-weight: bold;
 }
 
-.expand_chinese:hover {
-    cursor: pointer;
+.expand_chinese_fix {
+   position: fixed;
+   bottom: 20px;
+   left: 20px;
 }
 
+.expand_chinese_fix_answer {
+   position: fixed;
+   bottom: 70px;
+   left: 20px;
+}
 
 /*隐藏掉插件默认样式*/
 
@@ -68,5 +75,9 @@
 
 .soundLink:hover,
 .replaybutton:hover {
+    cursor: pointer;
+}
+
+.expand_chinese:hover {
     cursor: pointer;
 }
