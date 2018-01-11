@@ -35,6 +35,10 @@
     font-weight: bold;
 }
 
+.answer .note {
+    color: crimson;
+}
+
 .expand_chinese_fix {
    position: fixed;
    bottom: 20px;

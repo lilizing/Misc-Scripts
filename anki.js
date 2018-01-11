@@ -81,7 +81,7 @@ async function lrcHander(inputFile, outputFile, audioName) {
                 let english = content.match(/[\x00-\xff]/igm).join('').trim();
                 let chinese = content.match(/[^\x00-\xff]/igm).join('').trim();
                 let audio = "[sound:" + audioName + ".mp3]"
-                let result = english + '|' + chinese + '|' + audio + '|Note:' + '\n'
+                let result = english + '|' + chinese + '|' + audio + '| ' + '\n'
 
                 if (err) {
                     reject(err)
