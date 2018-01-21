@@ -1,3 +1,5 @@
+import { log } from 'util';
+
 // /[\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\“\”\<\>\！]/g
 // /[^\x00-\xff]/igm
 // [^\u4e00-\u9fa5\uff00-\uffef]
@@ -76,10 +78,12 @@ async function lrcHander(inputFile, outputFile, audioName) {
             exec('enca -L zh_CN -x UTF-8 "' + inputFile + '"', function (err, stdout, stderr) {
 
                 let content = fs.readFileSync(inputFile).toString();
-                // let content = "[00:00.00]I remember when I was pregnant with Richard Philip and were living with Grandma and Grandpa. Philip was a young doctor, and he kept talking about having a house of our own. It's natural.		我还记得我怀理查德的时候。那时菲利普和我跟你爷爷和奶奶住在一起。菲利普是个年轻的医生，他老是说要有一所我们自己的房子。这是很自然的事。"
-                content = content.replace(/\[00:00.00\]/, '')
-                let english = content.match(/[\x00-\xff]/igm).join('').trim();
-                let chinese = content.match(/[^\x00-\xff]/igm).join('').trim();
+                content = content.replace(/\[\d\d:\d\d.\d\d\]/, '')
+                let values = content.split('\t\t')
+                // let english = content.match(/[\x00-\xff]/igm).join('').trim(); //单字节
+                // let chinese = content.match(/[^\x00-\xff]/igm).join('').trim(); //双字节
+                let english = values[0].trim()
+                let chinese = values[1].trim()
                 let audio = "[sound:" + audioName + ".mp3]"
                 let result = english + '|' + chinese + '|' + audio + '| ' + '\n'
 

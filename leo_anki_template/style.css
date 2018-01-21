@@ -2,6 +2,7 @@
     display: relative;
     border-radius: 8px 8px 8px 8px;
     box-shadow: 2px 2px 5px #808080;
+    overflow: auto;
 }
 
 .audio {
