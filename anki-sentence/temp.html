@@ -1,0 +1,117 @@
+<link rel="stylesheet" type="text/css" href="En.word.css">
+
+<!-- <a onclick="event.stopPropagation();" href="yddict:///dict?q={{text:expression}}&x-success=anki://"> -->
+<a onclick="event.stopPropagation();" href="eudic://x-callback-url/searchword?word={{text:expression}}&x-success=anki://">
+    <div class="topbar light-r bg-r">RECITE│
+        <span id=time></span>
+    </div>
+</a>
+
+<p>
+    <div id="front" class="word">{{expression}}</div>
+
+    {{#reading}}
+    <br>
+    <div class="phoneticsymbol">{{reading}}</div>
+    {{/reading}}
+
+
+    <!-- <audio id="{{expression}}" src="{{expression}}.mp3" preload="preload"></audio> -->
+    <audio id="player" src=""></audio>
+    <br>
+    <hr class="bg-r" style="width:35%;" />
+    <!-- <input type="button" onclick="document.getElementById('{{expression}}').play();  " value="" style="height: 60px; width: 60px; background: url(_play-r.png);border:none;background-size:100%;vertical-align: middle;" /> -->
+    <input type="button" onClick="playAudio();" value="" style="height: 60px; width: 60px; background: url(_play-r.png);border:none;background-size:100%;vertical-align: middle;"
+    />
+    <hr class="bg-r" style="width:35%;" /> 
+    {{#notes}}
+    <br>
+    <hr class="bg-r" style="width:100%" ; />
+    <p>
+        <div class="hint">{{notes}}</div>
+    </p>
+    {{/notes}}
+
+
+    <div class="slidetop">
+            {{#glossary}}
+                <br><div class="paraphrase">{{glossary}}</div>
+            {{/glossary}}
+    
+            {{#notes}}
+                <br><hr class="bg-r"  style="width:100%"; />
+                <p><div class="hint">{{notes}}</div>
+            {{/notes}}
+    
+            {{#sentence}}
+                <br><div class="en eg-r">{{sentence}}</div>
+                {{#sentence_glossary}}<div class="zh eg-r">{{sentence_glossary}}</div>{{/sentence_glossary}}
+            {{/sentence}}
+    </div>
+
+    <script type="text/javascript">
+
+     [].forEach.call(document.querySelectorAll('.paraphrase'),
+       function(V0) {
+          V0.innerHTML = V0.innerHTML
+	.replace(/(\&nbsp\;)/g,"\ ")
+	.replace(/(\u00A0)/g,"<br>")
+	.replace(/(\.\<br\>)/g,"\. ")
+	.replace(/(\ vi\.\ )/g,"<br><h class=\"h\ bg\-r\">vi.</h>")
+	.replace(/(a\.\ )/g,"<h class=\"h\ bg\-r\">a.</h>")
+	.replace(/(vi\.\ )/g,"<h class=\"h\ bg\-r\">vi.</h>")
+	.replace(/(vt\.\ )/g,"<h class=\"h\ bg\-r\">vt.</h>")
+	.replace(/(art\.\ )/g,"<h class=\"h\ bg\-r\">art.</h>")
+	.replace(/(aux\.\ )/g,"<h class=\"h\ bg\-r\">aux.</h>")
+	.replace(/(adj\.\ )/g,"<h class=\"h\ bg\-r\">adj.</h>")
+	.replace(/(adv\.\ )/g,"<h class=\"h\ bg\-r\">adv.</h>")
+	.replace(/(abbr\.\ )/g,"<h class=\"h\ bg\-r\">abbr.</h>")
+	.replace(/(ad\.\ )/g,"<h class=\"h\ bg\-r\">ad.</h>")
+	.replace(/(v\.\ )/g,"<h class=\"h\ bg\-r\">v.</h>")
+	.replace(/(int\.\ )/g,"<h class=\"h\ bg\-r\">int.</h>")
+	.replace(/(num\.\ )/g,"<h class=\"h\ bg\-r\">num.</h>")
+	.replace(/(conj\.\ )/g,"<h class=\"h\ bg\-r\">conj.</h>")
+	.replace(/(prep\.\ )/g,"<h class=\"h\ bg\-r\">prep.</h>")
+	.replace(/(pron\.\ )/g,"<h class=\"h\ bg\-r\">pron.</h>")
+	.replace(/(n\.\ )/g,"<h class=\"h\ bg\-r\">n.</h>")
+	.replace(/(\&amp\;\<br>)/g,"<h class=\"hamp\ bg\-r\">\ &\ </h>");
+ });
+
+        function showLocale(objD) {
+            var hh = objD.getHours();
+            if (hh < 10) hh = '0' + hh;
+            var mm = objD.getMinutes();
+            if (mm < 10) mm = '0' + mm;
+            str = hh + ":" + mm;
+            return (str);
+        }
+        function tick() {
+            var today;
+            today = new Date();
+            document.getElementById("time").innerHTML = showLocale(today);
+            window.setTimeout("tick()", 1000);
+        }
+        tick();
+
+        //play audio
+        function playAudio() {
+            var base = "http://fanyi.baidu.com/gettts?lan=en&text=";
+            //var base = "http://dict.youdao.com/dictvoice?type=en-US&audio=";
+            var word = document.getElementById("front").innerText;
+            // console.log(word)
+            var audioSrc = base + encodeURI(word);
+            //check if it is desktop client
+            if (typeof (py) == "object") {
+                //if it is desktop client, need install addon #498789867 as dependency 
+                py.link("ankiplay" + audioSrc)
+            } else {
+                //mobile client (iOS or Android)
+                var audio = document.getElementById('player')
+                player.src = audioSrc
+                player.play()
+            }
+        }
+    </script>
+
+
+    <!-- http://leaflyer.lofter.com -->

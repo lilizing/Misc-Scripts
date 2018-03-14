@@ -1,0 +1,79 @@
+<link rel="stylesheet" type="text/css" href="En.word.css">
+
+<a onclick="event.stopPropagation();" href="http://yunev.cn/audio/{{Audio}}.mp3">
+    <div class="topbar light-r bg-r">看中说英│
+        <span id=time></span>
+    </div>
+</a>
+
+<p>
+
+    <div id="front" class="en">{{Chinese}}</div>
+
+    <div id="audio" style="display:none;">{{Audio}}.mp3</div>
+
+    <audio id="player" src=""></audio>
+    <hr class="bg-r" style="width:35%;" />
+    <input type="button" onClick="playAudio();" value="" style="height: 60px; width: 60px; background: url(_play-r.png);border:none;background-size:100%;vertical-align: middle;"
+    />
+    <hr class="bg-r" style="width:35%;" />
+</p>
+
+<script type="text/javascript">
+
+    function showLocale(objD) {
+        var hh = objD.getHours();
+        if (hh < 10) hh = '0' + hh;
+        var mm = objD.getMinutes();
+        if (mm < 10) mm = '0' + mm;
+        str = hh + ":" + mm;
+        return (str);
+    }
+
+    function tick() {
+        var today;
+        today = new Date();
+        document.getElementById("time").innerHTML = showLocale(today);
+        window.setTimeout("tick()", 1000);
+    }
+    tick();
+
+    //play audio
+    function playAudio() {
+        var base = "http://yunev.cn/audio/";
+        // var word = '1517050692686.1.mp3';
+        var word = document.getElementById("audio").innerText;
+        var audioSrc = base + encodeURI(word);
+        //check if it is desktop client
+        if (typeof (py) == "object") {
+            //if it is desktop client, need install addon #498789867 as dependency 
+            py.link("ankiplay" + audioSrc)
+        } else {
+            //mobile client (iOS or Android)
+            var audio = document.getElementById('player')
+            player.src = audioSrc
+            player.play()
+        }
+    }
+</script> {{FrontSide}}
+
+<p>
+    <div class="en eg-r">{{English}}</div>
+</p>
+
+{{#Note}}
+<hr class="bg-r" style="width:90%;" />
+<p>
+    <div class="hint paraphrase note">{{Note}}</div>
+</p>
+{{/Note}}
+
+<script type="text/javascript">
+    document.querySelectorAll('.note').forEach(function (V0) {
+        console.log(V0.innerHTML)
+        let result = V0.innerHTML
+            .replace(/([^:\|]+)(:)([^\|]+)(\|?)/g, '•<a onclick="event.stopPropagation();" href="eudic://x-callback-url/searchword?word=$1&x-success=anki://"><h class=\"h\ bg\-s\">$1</h><h class=\"h" style="color:#333333;font-size:18px; padding: 10px 10px 10px 10px;">$3</h></a><br/><br/>');
+        V0.innerHTML = result
+        console.log(result)
+    });
+</script>

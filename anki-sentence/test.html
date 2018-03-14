@@ -1,0 +1,78 @@
+<p>
+    <div class="hint paraphrase note">
+        platnum:铂金|sit around:无所事事|the rest of:...剩下(其余)的部分
+    </div>
+</p>
+
+<style>
+    .hint {
+        font: 22px/25px kt;
+        text-align: left;
+        text-decoration: none;
+        padding: 0px 10px;
+    }
+
+    .en {
+        font: 18px/22px times;
+        text-align: left;
+        padding: 0.5em;
+        margin-left: 0.2em;
+    }
+
+    .bg-r {
+        background-color: #338eca;
+    }
+
+    .bg-s {
+        background-color: #56a844;
+    }
+
+    .bg-d {
+        background-color: #ec6c4f;
+    }
+
+    .h {
+        /* font: 14px times; */
+        color: #fff;
+        padding: 5px 5px 5px 5px;
+        margin: 0px 0px 0px 10px;
+        border-radius: 2px;
+    }
+
+    .paraphrase {
+        font: 24px/38px kt;
+        color: #222;
+        text-align: left;
+        margin-left: .3em;
+    }
+</style>
+
+<script type="text/javascript">
+    document.querySelectorAll('.note').forEach(function (V0) {
+        console.log(V0.innerHTML)
+        let result = V0.innerHTML
+            .replace(/([^:\|]+)(:)([^\|]+)(\|?)/g, '•<a onclick="event.stopPropagation();" href="eudic://x-callback-url/searchword?word=$1&x-success=anki://"><h class=\"h\ bg\-s\">$1</h><h class=\"h" style="color:#333333;font-size:18px; padding: 10px 10px 10px 10px;">$3</h></a><br/><br/>');
+        V0.innerHTML = result
+        console.log(result)
+    });
+</script>
+
+<!-- .replace(/(\.\<br\>)/g, "\. ")
+    .replace(/(\ vi\.\ )/g,"<br><h class=\"h\ bg\-r\">vi.</h>")
+	.replace(/(a\.\ )/g,"<h class=\"h\ bg\-r\">a.</h>")
+	.replace(/(vi\.\ )/g,"<h class=\"h\ bg\-r\">vi.</h>")
+	.replace(/(vt\.\ )/g,"<h class=\"h\ bg\-r\">vt.</h>")
+	.replace(/(art\.\ )/g,"<h class=\"h\ bg\-r\">art.</h>")
+	.replace(/(aux\.\ )/g,"<h class=\"h\ bg\-r\">aux.</h>")
+	.replace(/(adj\.\ )/g,"<h class=\"h\ bg\-r\">adj.</h>")
+	.replace(/(adv\.\ )/g,"<h class=\"h\ bg\-r\">adv.</h>")
+	.replace(/(abbr\.\ )/g,"<h class=\"h\ bg\-r\">abbr.</h>")
+	.replace(/(ad\.\ )/g,"<h class=\"h\ bg\-r\">ad.</h>")
+	.replace(/(v\.\ )/g,"<h class=\"h\ bg\-r\">v.</h>")
+	.replace(/(int\.\ )/g,"<h class=\"h\ bg\-r\">int.</h>")
+	.replace(/(num\.\ )/g,"<h class=\"h\ bg\-r\">num.</h>")
+	.replace(/(conj\.\ )/g,"<h class=\"h\ bg\-r\">conj.</h>")
+	.replace(/(prep\.\ )/g,"<h class=\"h\ bg\-r\">prep.</h>")
+	.replace(/(pron\.\ )/g,"<h class=\"h\ bg\-r\">pron.</h>")
+	.replace(/(n\.\ )/g,"<h class=\"h\ bg\-r\">n.</h>")
+	.replace(/(\&amp\;\<br>)/g,"<h class=\"hamp\ bg\-r\">\ &\ </h>") -->

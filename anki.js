@@ -1,11 +1,7 @@
-import { log } from 'util';
-
-// /[\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\“\”\<\>\！]/g
-// /[^\x00-\xff]/igm
-// [^\u4e00-\u9fa5\uff00-\uffef]
 let fs = require('fs');
 let path = require('path');
-let media_dir = "/Users/leo/Library/Application Support/Anki2/leo/collection.media"
+// let media_dir = "/Users/leo/Library/Application Support/Anki2/leo/collection.media"
+let media_dir = "/Users/leo/space/english/anki/audio"
 let anki_file = 'anki.csv'
 async function anki() {
     let dir = process.cwd();
@@ -80,12 +76,15 @@ async function lrcHander(inputFile, outputFile, audioName) {
                 let content = fs.readFileSync(inputFile).toString();
                 content = content.replace(/\[\d\d:\d\d.\d\d\]/, '')
                 let values = content.split('\t\t')
+                // /[\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\“\”\<\>\！]/g
+                // /[^\x00-\xff]/igm
+                // [^\u4e00-\u9fa5\uff00-\uffef]
                 // let english = content.match(/[\x00-\xff]/igm).join('').trim(); //单字节
                 // let chinese = content.match(/[^\x00-\xff]/igm).join('').trim(); //双字节
                 let english = values[0].trim()
                 let chinese = values[1].trim()
-                let audio = "[sound:" + audioName + ".mp3]"
-                let result = english + '|' + chinese + '|' + audio + '| ' + '\n'
+                // let audio = "[sound:" + audioName + ".mp3]"
+                let result = english + '|' + chinese + '|' + audioName + '| ' + '\n'
 
                 if (err) {
                     reject(err)

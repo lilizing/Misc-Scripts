@@ -1,0 +1,179 @@
+/*  Leaflyer-单词卡片模板 v1.6  */
+
+@font-face { font-family: kt; src: url('_kt.ttf'); }
+@font-face { font-family: times; src: url('_times.ttf'); }
+
+.card { font-size: 20px; text-align: center; }
+
+.light-r { color: #b7d5eb; }
+.light-s { color: #c1e7b8; }
+.light-d { color: #f7c4b8; }
+
+.bg-r { background-color: #338eca; }
+.bg-s { background-color: #56a844; }
+.bg-d { background-color: #ec6c4f; }
+
+.eg-r { color:#222; background-color: #e9eff2; }
+.eg-s { color:#222; background-color:  #e9f4e7; }
+.eg-d { color:#222; background-color:  #f8eeec; }
+
+.night_mode .bg-r { background-color: #425c74; }
+
+#time { font: 600 18px/35px times ; letter-spacing: 0px ; }
+
+.topbar {
+	font: 600 18px/35px times ;
+	letter-spacing: 5px ;
+	text-align: center ;
+	border: 0px ;
+	border-radius: 30px ;
+	}
+
+.word { font: 32px/35px times; letter-spacing: 1px;}
+
+.phoneticsymbol {
+	font: 18px/18px times;
+	color:#666;
+	text-align: center;
+	}
+
+.h {
+	font: 26px/28px times;
+	color: #fff;
+	padding: 0px 3px 2px 5px ;
+	margin:0px 5px;
+	border-radius: 2px;
+	}
+
+.hamp {
+	font: 26px/28px times;
+	color: #fff;
+	padding: 0px 0px 2px 0px ;
+	margin:0px -13px 0px -9px;
+	border-radius: 3px;
+	}
+
+.paraphrase {
+	font: 24px/38px kt;
+	color: #222;
+	text-align: left;
+	margin-left:.3em;
+	}
+
+.en {
+	font: 18px/22px times;
+	text-align:left; 
+	padding: 0.5em;
+	margin-left: 0.2em; 
+	}
+
+.zh { 
+	font: 18px/22px kt;
+	text-align:left;
+	padding: 0.5em;
+	margin: -0.5em 0em 0em 0.2em;
+ 	}
+
+.btn { opacity:0.9; position:fixed; right:10px; bottom:10px; }
+.btn:active { opacity:1; }
+
+
+
+.hint {
+	font: 22px/25px kt;
+	text-align: left;
+#	text-decoration:none;
+	padding: 0px 10px;
+	}
+
+u {
+	text-decoration: none;
+	display: inline;
+#	background-color: #ffff75;
+	border-bottom: 2px solid #ec6c4f;
+ 	}
+
+a { text-decoration:none; }
+
+hr {
+	height: 2px;
+	border-radius:2px;
+	width:70%;
+	display:inline-block;
+	border:0px solid #ffffff;
+	vertical-align: middle;
+	box-shadow: 0px 2px 4px  2px #eee;
+ }
+
+.win hr {
+	vertical-align:middle;
+	margin-right: 0.2em;
+	margin-left: 0.2em;
+}
+
+
+#typeans {
+	font: 30px/35px times;
+}
+
+.typeGood {
+	border: 2px solid #56a844;
+	border-radius:0px;
+	height: 20px;
+	background-color: #56a844;
+	font: 30px/32px times;
+	text-align:center;
+	letter-spacing: 1px;
+	word-spacing: 1px;
+	color: white;
+	padding: 0px 0px 2px 0px;
+}
+
+/*正确的样式*/
+
+
+.typeMissed {
+	border: 2px solid #ec6c4f;
+	border-radius:0px;
+	font: 30px/32px times;
+	background-color: #ec6c4f;
+	text-align:center;
+	letter-spacing: 1px;
+	word-spacing: 1px;
+	color: white;
+	padding: 0px 0px 2px 0px;
+
+}
+
+/*遗漏的样式*/
+
+
+.typeBad {
+	border: 2px solid #728d98;
+	border-radius:0px;
+	font: 30px/32px times;
+	background-color: #728d98;
+	letter-spacing: 1px;
+	word-spacing: 1px;
+	color: white;
+	padding: 0px 0px 2px 0px;
+
+}
+
+/*错误的样式*/
+
+
+.slidetop {
+	position:relative;
+	-webkit-animation: slidetop 0.5s 0s;
+	-webkit-animation-fill-mode:forwards;
+	}
+
+@-webkit-keyframes slidetop {
+	0%	{ opacity: 0;  top:50px;}
+	50%	{ opacity: 0.8;  top:-5px;}
+	80%	{ opacity: 0.95;  top:0px;}
+	100%	{ opacity: 1; top:0px;}
+	}
+
+/* http://leaflyer.lofter.com */
