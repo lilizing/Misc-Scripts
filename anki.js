@@ -1,10 +1,12 @@
 let fs = require('fs');
 let path = require('path');
 // let media_dir = "/Users/leo/Library/Application Support/Anki2/leo/collection.media"
-let media_dir = "/Users/leo/space/english/anki/audio"
+// let media_dir = "/Users/leo/space/english/anki/audio"
 let anki_file = 'anki.csv'
 async function anki() {
     let dir = process.cwd();
+    let dirName = path.basename(dir);
+
     let allFiles = fs.readdirSync(dir);
 
     let files = allFiles.filter((file, index, array) => {
@@ -24,7 +26,7 @@ async function anki() {
             if (path.extname(file) != '.lrc' && path.extname(file) != '.mp3') {
                 continue;
             }
-            await lrcHander(inputFile, dir + '/' + anki_file, newName).catch((err) => { console.log(err) })
+            await lrcHander(inputFile, dir + '/' + anki_file, dirName + '/' + newName).catch((err) => { console.log(err) })
         }
 
         let newLrcFile = dir + '/' + newName + path.extname(file)
@@ -32,7 +34,7 @@ async function anki() {
         let newMp3File = dir + '/' + newName + '.mp3'
         await rename(inputFile, newLrcFile)
         await rename(oldMp3File, newMp3File)
-        copy(newMp3File, media_dir + '/' + newName + '.mp3')
+        // copy(newMp3File, media_dir + '/' + newName + '.mp3')
     }
 }
 
